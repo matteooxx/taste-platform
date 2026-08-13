@@ -1,0 +1,10 @@
+{
+  "app": "python3 app.py",
+  "context": {
+    "region": "eu-west-1",
+    "fallback_region": "eu-central-1",
+    "project_prefix": "taste-platform",
+    "owner_email": ""
+  },
+  "requireApproval": "broadening"
+}

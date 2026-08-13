@@ -1,0 +1,35 @@
+services:
+  api:
+    build:
+      context: .
+    image: taste-platform:local
+    restart: unless-stopped
+    init: true
+    read_only: true
+    environment:
+      TASTE_DB_PATH: /data/taste.db
+      TASTE_AUTH_TOKEN: ${TASTE_AUTH_TOKEN:-}
+      TASTE_OLLAMA_URL: ${TASTE_OLLAMA_URL:-}
+      TASTE_OLLAMA_MODEL: ${TASTE_OLLAMA_MODEL:-llama3.2:3b}
+    ports:
+      - "${TASTE_BIND_ADDRESS:-127.0.0.1}:${TASTE_PORT:-8090}:8090"
+    volumes:
+      - ./runtime:/data:rw
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=32m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health', timeout=3).read()"
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3

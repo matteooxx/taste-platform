@@ -1,0 +1,17 @@
+[
+  {"name": "Celeste", "type": "game", "tags": ["platformer", "indie", "story"]},
+  {"name": "Hades", "type": "game", "tags": ["action", "indie", "roguelike"]},
+  {"name": "Outer Wilds", "type": "game", "tags": ["exploration", "mystery", "story"]},
+  {"name": "Arrival", "type": "movie", "tags": ["science fiction", "drama", "mystery"]},
+  {"name": "Moonlight", "type": "movie", "tags": ["drama", "character"]},
+  {"name": "The Grand Budapest Hotel", "type": "movie", "tags": ["comedy", "adventure"]},
+  {"name": "Dark", "type": "show", "tags": ["science fiction", "mystery", "drama"]},
+  {"name": "The Bear", "type": "show", "tags": ["drama", "comedy", "character"]},
+  {"name": "Blue Eye Samurai", "type": "show", "tags": ["animation", "action", "drama"]},
+  {"name": "Cowboy Bebop", "type": "anime", "tags": ["science fiction", "action", "music"]},
+  {"name": "Frieren", "type": "anime", "tags": ["fantasy", "adventure", "character"]},
+  {"name": "Odd Taxi", "type": "anime", "tags": ["mystery", "comedy", "crime"]},
+  {"name": "In Rainbows", "type": "music", "tags": ["alternative", "rock", "atmospheric"]},
+  {"name": "Discovery", "type": "music", "tags": ["electronic", "dance", "pop"]},
+  {"name": "Sometimes I Might Be Introvert", "type": "music", "tags": ["hip hop", "soul", "story"]}
+]
