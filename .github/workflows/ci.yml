@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pip-audit
+      # tests/ covers the provider-free local API and synthesises the optional
+      # CDK stacks with aws-cdk-lib; it never deploys or reaches AWS.
+      # test_e2e.py is cloud-only and deliberately excluded via pytest.ini.
+      - name: Test
+        run: python -m pytest -q tests
+      - name: Byte-compile sources
+        run: python -m compileall -q .
+      - name: Validate the Compose file
+        run: docker compose config --quiet
+      - name: Audit dependencies
+        run: python -m pip_audit -r requirements.txt --progress-spinner off
+
+  container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build runtime image
+        run: docker build --tag taste-platform:ci .
