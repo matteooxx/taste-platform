@@ -10,6 +10,10 @@ cdk.out/
 .env
 .env.*
 !.env.example
+# Populated environment files such as local.env; only *.example templates
+# are tracked.
+*.env
+!*.env.example
 *.pem
 *.key
 *.p12
@@ -18,3 +22,10 @@ cdk.out/
 runtime/
 *.db
 *.db-*
+*.sqlite
+*.sqlite3
+*.log
+node_modules/
+.idea/
+.vscode/
+Thumbs.db

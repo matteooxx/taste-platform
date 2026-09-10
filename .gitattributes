@@ -1,0 +1,12 @@
+# Normalise line endings so that a checkout on Windows cannot introduce CRLF
+# into Python sources, JSON or the Dockerfile that are executed or read on
+# Linux and inside the container.
+* text=auto eol=lf
+
+# Binary assets are never normalised.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
