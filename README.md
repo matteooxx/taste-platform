@@ -1,5 +1,7 @@
 # Taste Platform
 
+Built by Matteo Mastore — [matteomastore.com](https://matteomastore.com)
+
 Taste Platform records ratings and tags across movies, shows, anime, games,
 and music, then produces local recommendations.
 
